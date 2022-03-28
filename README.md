@@ -1,2 +1,2 @@
-# hora-do-conto
+# hora do conto
 Trabalho laboratório de software
