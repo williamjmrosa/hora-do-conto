@@ -1,2 +1,4 @@
-# hora do conto
+# Hora do conto
 Trabalho laboratório de software.
+
+[Documentação](../../wiki/)
