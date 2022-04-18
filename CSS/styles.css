@@ -1,0 +1,90 @@
+
+body {
+	font-family: 'Helvetica Neue';
+	font-style: normal;
+	font-weight: 700;
+	color: #FFF;
+}
+
+#menu_superior, #artigo{
+	background-color: #2367B0;
+}
+
+#artigo{
+	width: 100%;
+	height: auto;
+	margin-top: 2%;
+}
+
+#menu_superior{
+	width:100%;
+	
+}
+
+#logo1{
+	border:none;
+	display:inline-block;
+	width:10%;
+	height:auto;
+}
+
+#logo1 > img{
+	width: 50%;
+	margin-left: 15%;
+	margin-top: 15%;
+	margin-bottom: 10%;
+	
+}
+
+#menu{
+	border:none;
+	width:50%;
+	height:auto;
+	display: inline-block;
+}
+
+#menu > a{
+	font-family: 'Helvetica Neue';
+	font-style: normal;
+	font-weight: 700;
+	color: #FFF;
+	margin-left: 3%;
+}
+
+#menu2{
+	display: inline-block;
+	width: 30%;
+	text-align: right;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+.check-list{
+	display:inline-block;
+	margin: 5%;	
+}
+
+.check-list > li{
+	list-style-image: url("../img/check.svg");
+	font-size: 180%;
+}
+
+#artigo > img{
+	width: 40%;
+	margin-top: 2%;
+	border-radius: 5%;
+	margin-bottom: 2%;
+}
+
+#menu2 > a {
+	color:#FFF;
+	border-radius: 6%;
+	background: #FFB82F;
+	margin-left: 3%;
+	padding: 3%;
+} 
+
+
+
