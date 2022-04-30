@@ -18,6 +18,7 @@
 </head>
 <body>
 	<header class="p-3 primaria fonte mb-2">
+		
 		<!-- Menu Superior -->
 		<div class="m-0">
 			<div
@@ -43,7 +44,10 @@
 			</div>
 		</div>
 	</header>
-	<div id="artigo" class="d-flex flex-wrap primaria mb-4">
+	
+	<!-- Artigo -->
+	
+	<div id="artigo" class="d-md-flex flex-row primaria mb-4 pb-4">
 		<div class="mt-4 ms-5">
 			<ul class="check-list">
 				<li>Conteúdo online</li>
@@ -55,11 +59,12 @@
 		</div>
 		<img class="container" alt="Estudo" src="../img/aluna.jpeg">
 	</div>
+	<!-- Planos -->
 	<div id="planos" class="fundo">
 		<h1 class="fonte text-primaria m-3">NOSSOS PLANOS</h1>
-		<div id="cardes" class="cards mt-4 d-lg-flex flex-row justify-content-between align-items-center container m-0">
+		<div id="cardes" class="cards mt-4 w-100">
 			<!-- Card Aluno -->
-			<div class="card fundo mt-4">
+			<div class="card fundo mt-4 d-inline-block">
 				<div id="aluno" class="card-body primaria">
 					<h4 class="card-title fonte">ALUNOS</h4>
 					<ul class="list-card">
@@ -73,7 +78,7 @@
 				
 			</div>
 			<!-- Card Professor -->
-			<div class="card fundo mt-4">
+			<div class="card fundo mt-4 d-inline-block">
 				<div id="professor" class="card-body primaria">
 					<h4 class="card-title fonte">PROFESSORES</h4>
 					<ul class="list-card">
@@ -87,7 +92,7 @@
 				
 			</div>
 			<!-- Instituição -->
-			<div class="card fundo mt-4">
+			<div class="card fundo mt-4 d-inline-block">
 				<div id="instituicao" class="card-body primaria">
 					<h4 class="card-title fonte">INSTITUIÇÕES</h4>
 					<ul class="list-card">
@@ -103,9 +108,37 @@
 			
 		</div>
 	</div>
-	<div id="sobre" class="fundo">
-	<h1 class="fonte text-primaria m-3">Sobre a Hora do Conto</h1>
+	<div id="sobre" class="primaria">
+		<h1 class="fonte text-primaria fundo ps-4 pb-5 pt-5">Sobre a Hora do Conto</h1>
+		<div class="">
+		<img class="d-inline-block" alt="Hora do Conto" src="../img/logo2.svg">
+		<p class="text-start m-5 fonte d-inline-block w-50">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		</div>
 	</div>
+	<footer class="primaria mt-4 pt-4">
+		<div class="ms-4 fonte d-inline-block">
+			<h4 class="mb-2">Nossos Planos</h4>
+			<p>Alunos</p>
+			
+			<p>Instituições</p>
+			
+			<p>Professores</p>
+		</div>
+		<div class="ms-5 fonte d-inline-block align-top">
+			<h4 class="mb-2">Contato</h4>
+			<p>(51) 3333-3333</p>
+			<p>Canoas</p>
+			
+		</div>
+		<div class="text-center d-inline-block align-center w-50 mb-5">
+		<h4>Acompanhe nossas redes!</h4>
+		<a class="me-3"><img alt="FB" src="../img/fb.svg"> </a>
+		<a class="me-3"><img alt="Google" src="../img/google.svg"> </a>
+		<a class="me-3"><img alt="Twitter" src="../img/twitter.svg"> </a>
+		<a class="me-3"><img alt="Linkedin" src="../img/linkedin.svg"> </a>
+		<a class="me-3"><img alt="Instagram" src="../img/instagram.svg"> </a>
+		</div>
+	</footer>
 	<!-- JavaScript -->
 	<script src="../Framework/js/popper.min.js"></script>
 	<script src="../Framework/js/bootstrap.min.js"></script>

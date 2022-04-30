@@ -43,7 +43,8 @@ a{
 }
 
 #cardes .card{
-	margin-left: 4%;	
+	margin-left: 1%;
+	width: 30.3% !important;	
 }
 
 #aluno, #professor, #instituicao{
@@ -109,15 +110,17 @@ ul li::marker{
 	margin-bottom: 2%;
 }
 
-@media (max-width: 990px){
-	#aluno, #professor, #instituicao{
-	border-radius: 3%;
-	margin-left: 0;
+@media (max-width: 1054px){
+	#cardes .card{
+	width: 45% !important;
+	}
+
 }
 
-	#planos .card{
-		margin:auto;
-		width: 80%;
+@media (max-width: 570px){
+	#cardes .card{
+	margin: 5%;
+	width: 90% !important;
 	}
 
 }
