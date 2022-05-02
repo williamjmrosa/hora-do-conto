@@ -60,7 +60,7 @@
 			</div>
 			<div class="container mb-4 text-center">
 				<button type="submit" class="btn secundaria fonte fs-3 pe-5 ps-5 ">Entrar</button>
-				<div id="esqueceusenha" class="form-text mb-5 mt-5">Não possui uma conta? <a href="#" class="text-secundaria text-decoration-underline">Cadastre-se</a></div>
+				<div id="esqueceusenha" class="form-text mb-5 mt-5">Não possui uma conta? <a href="../visao/cadastre_se.php" class="text-secundaria text-decoration-underline">Cadastre-se</a></div>
 			</div>
 
 		</form>
