@@ -6,14 +6,28 @@ body, .fonte {
 	color: #FFF !important;
 }
 
+.fonte-secundaria{
+	font-style: normal;
+	font-weight: 600;
+	font-size: 78px;
+}
+
+.fundo-branco{
+	background-color: #FFF;
+}
+
+.fonte-cinza{
+	color:#6C6A6A;
+}
+
 body, .fundo{
 	background-color: #E5E5E5 !important;
 	border: none !important;
 }
 
-.tamanho{
-	width: 60% !important;
-	height: auto;
+.centralizar{
+	padding-left: 20% !important;
+	padding-right: 20% !important;
 }
 
 .primaria{
@@ -26,6 +40,10 @@ body, .fundo{
 
 .text-primaria{
 	color: #2367B0 !important;
+}
+
+.text-secundaria{
+	color: #FFB82F !important;
 }
 
 a{
