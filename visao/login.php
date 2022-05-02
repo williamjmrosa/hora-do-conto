@@ -38,7 +38,7 @@
 				</ul>
 
 				<div class="text-end">
-					<a class="btn secundaria me-3 fonte">Cadastre-se</a>
+					<a href="../visao/cadastre_se.php" class="btn secundaria me-3 fonte">Cadastre-se</a>
 					<a href="../visao/login.php" class="btn secundaria fonte">Acessar</a>
 				</div>
 			</div>
