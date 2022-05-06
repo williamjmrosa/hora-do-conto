@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="../Framework/css/bootstrap.min.css">
 
 </head>
-<body>
+<body class="fundo">
 	<header class="p-3 primaria fonte mb-2">
 		
 		<!-- Menu Superior -->
