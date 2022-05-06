@@ -20,7 +20,7 @@ body, .fonte {
 	color:#6C6A6A;
 }
 
-body, .fundo{
+.fundo{
 	background-color: #E5E5E5 !important;
 	border: none !important;
 }
@@ -38,6 +38,10 @@ body, .fundo{
 	background-color: #FFB82F !important;
 }
 
+.terciaria{
+	background-color: #1C538E !important;
+}
+
 .text-primaria{
 	color: #2367B0 !important;
 }
@@ -46,6 +50,21 @@ body, .fundo{
 	color: #FFB82F !important;
 }
 
+.perquisar::placeholder{
+	color: #FFF;
+}
+
+#menu-lateral > li{
+	border-top: 2px solid #FFB82F;
+}
+
+#menu-lateral > li:last-child{
+	border-bottom: 2px solid #FFB82F;
+}
+
+#menu-lateral > li > ul{
+	display: none;
+}
 
 a{
 	text-decoration: none !important;	
