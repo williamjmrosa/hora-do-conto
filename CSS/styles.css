@@ -1,9 +1,22 @@
+html, body{
+	width: 100%;
+	height: 100%;
+}
 
 body, .fonte {
 	/*font-family: 'Helvetica Neue' !important;*/
 	font-style: normal !important;
 	font-weight: 700 !important;
 	color: #FFF !important;
+}
+
+.textarea-fundo{
+	background: #FFFFFF;
+	opacity: 0.56;
+	/* Black / Black 32 */
+
+	border: 1px solid rgba(17, 17, 17, 0.32);
+	border-radius: 8px;
 }
 
 .fonte-secundaria{
@@ -56,6 +69,18 @@ body, .fonte {
 
 #menu-lateral > li{
 	border-top: 2px solid #FFB82F;
+
+}
+
+.abrir::after{
+	float:right;
+	content: url("../img/expand_more.svg");
+		
+}
+.baixo::after{
+	float:right;
+	content: url("../img/expand_more baixo.svg");
+	
 }
 
 #menu-lateral > li:last-child{
@@ -64,6 +89,10 @@ body, .fonte {
 
 #menu-lateral > li > ul{
 	display: none;
+}
+
+.w-70{
+	width: 70% !important;
 }
 
 a{
