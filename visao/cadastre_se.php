@@ -46,7 +46,7 @@
 	<!-- Inicio entrada de conteudo -->	
 		<div class="d-flex justify-content-center mb-5 mt-5">
 		
-		<form method="POST" action="../controle/aluno-controle.php?op=1" class="fundo-branco w-50 rounded-3">
+		<form id="formulario" method="POST" action="" class="fundo-branco w-50 rounded-3">
 			<?php 
             if (isset($_SESSION['msg'])){
     		?>
@@ -57,7 +57,7 @@
 			<div class="centralizar mb-2">
 				<h1 class="text-secundaria fonte text-center mt-3">Cadastre-se</h1>
     			<label>Eu sou</label>
-    			<select name="tipo" class="form-select" aria-label="Default select example">
+    			<select name="tipo" id="tipo" class="form-select" aria-label="Default select example">
                     <option selected>Selecione</option>
                     <option value="1">Responsavel</option>
                     <option value="2">Aluno</option>
@@ -85,12 +85,18 @@
 			</div>
 			<div class="centralizar mb-2">
 				<div class="input-group flex-nowrap">
+                	<span class="input-group-text" id="contato">Contato</span>
+					<input type="text" name="contato" class="form-control" placeholder="Contato" aria-label="Contato" aria-describedby="email">
+                </div>
+			</div>
+			<div class="centralizar mb-2">
+				<div class="input-group flex-nowrap">
                 	<span class="input-group-text" id="senha">Senha</span>
 					<input type="password" name="senha" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="senha">
                 </div>
 			</div>
 			<div class="container mb-4 text-center mt-4">
-				<button type="submit" class="btn secundaria fonte fs-3 pe-5 ps-5 ">Cadastrar</button>
+				<button type="submit" id="submit" class="btn secundaria fonte fs-3 pe-5 ps-5 ">Cadastrar</button>
 				<div id="esqueceusenha" class="form-text mb-5 mt-5">Já possui uma conta? <a href="../visao/login.php" class="text-secundaria text-decoration-underline">Entrar</a></div>
 			</div>
 			
@@ -128,4 +134,6 @@
 	<script src="../Framework/js/bootstrap.min.js"></script>
 	<!-- JQuery -->
 	<script src="../Framework/jquery-3.6.0.min.js"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript" src="../js/cadastro.js"></script>
 </body>
