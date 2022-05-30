@@ -1,9 +1,4 @@
-<?php
-?>
-<?php
-?>
-<?php
-?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -50,39 +45,48 @@
 	</header>
 	<!-- Inicio entrada de conteudo -->	
 		<div class="d-flex justify-content-center mb-5 mt-5">
-		<form class="fundo-branco w-50 rounded-3">
+		
+		<form method="POST" action="../controle/aluno-controle.php?op=1" class="fundo-branco w-50 rounded-3">
+			<?php 
+            if (isset($_SESSION['msg'])){
+    		?>
+    		<div class="alert alert-danger m-2" role="alert"> <p><?php echo $_SESSION['msg']; ?></p></div>
+    		<?php }
+    		unset($_SESSION['msg']);
+    		?>
 			<div class="centralizar mb-2">
 				<h1 class="text-secundaria fonte text-center mt-3">Cadastre-se</h1>
     			<label>Eu sou</label>
-    			<select class="form-select" aria-label="Default select example">
+    			<select name="tipo" class="form-select" aria-label="Default select example">
                     <option selected>Selecione</option>
-                    <option value="1">Aluno</option>
-                	<option value="2">Professor</option>
-                	<option value="3">Instituição</option>
+                    <option value="1">Responsavel</option>
+                    <option value="2">Aluno</option>
+                	<option value="3">Professor</option>
+                	<option value="4">Instituição</option>
                 </select>
 			</div>
 			<div class="centralizar mb-2">
 				<div class="input-group flex-nowrap">
                 	<span class="input-group-text" id="nome">Nome</span>
-					<input type="text" class="form-control" placeholder="Nome Completo" aria-label="Nome Completo" aria-describedby="nome">
+					<input type="text" name="nome" class="form-control" placeholder="Nome Completo" aria-label="Nome Completo" aria-describedby="nome">
                 </div>
 			</div>
 			<div class="centralizar mb-2">
 				<div class="input-group flex-nowrap">
                 	<span class="input-group-text" id="cpf">CPF/CNPJ</span>
-					<input type="text" class="form-control" placeholder="CPF/CNPJ" aria-label="Nome Completo" aria-describedby="cpf">
+					<input type="text" name="cpf-cnpj" class="form-control" placeholder="CPF/CNPJ" aria-describedby="cpf">
                 </div>
 			</div>
 			<div class="centralizar mb-2">
 				<div class="input-group flex-nowrap">
                 	<span class="input-group-text" id="email">Email</span>
-					<input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email">
+					<input type="text" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email">
                 </div>
 			</div>
 			<div class="centralizar mb-2">
 				<div class="input-group flex-nowrap">
                 	<span class="input-group-text" id="senha">Senha</span>
-					<input type="password" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="senha">
+					<input type="password" name="senha" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="senha">
                 </div>
 			</div>
 			<div class="container mb-4 text-center mt-4">
@@ -92,7 +96,9 @@
 			
 		</form>
 		</div>
+	
 	<!-- Fim entrada de conteudo -->
+	
 	<footer class="primaria mt-4 pt-4">
 		<div class="ms-4 fonte d-inline-block">
 			<h4 class="mb-2">Nossos Planos</h4>
