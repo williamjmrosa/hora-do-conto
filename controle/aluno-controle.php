@@ -18,6 +18,7 @@ if(isset($_GET['op'])){
             $al->cpf_cnpj = $_POST['cpf-cnpj'];
             $al->nome = $_POST['nome'];
             $al->email = $_POST['email'];
+            $al->contato = $_POST['contato'];
             $al->senha = $_POST['senha'];
             
             $alDAO = new AlunoDAO;
@@ -29,8 +30,10 @@ if(isset($_GET['op'])){
         }
         $_SESSION['erros'] = serialize($erro);
         header('location:../visao/cadastre_se.php');
+       
         
         break;
+        
         
         //Alterar Aluno
         case 2:
@@ -43,6 +46,6 @@ if(isset($_GET['op'])){
     }
 
 }else{
-    
+    header('location:../index.php');
 }
 ?>
