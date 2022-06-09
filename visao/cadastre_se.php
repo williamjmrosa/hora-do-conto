@@ -50,9 +50,14 @@
 			<?php 
             if (isset($_SESSION['msg'])){
     		?>
-    		<div class="alert alert-danger m-2" role="alert"> <p><?php echo $_SESSION['msg']; ?></p></div>
-    		<?php }
-    		unset($_SESSION['msg']);
+    		<div class="alert alert-success m-2" role="alert"> <p><?php echo $_SESSION['msg']; ?></p></div>
+    		<?php unset($_SESSION['msg']);
+            }else if(isset($_SESSION['erros'])){
+            	$erros = unserialize($_SESSION['erros']);
+            	?>
+    		<div class="alert alert-danger m-2" role="alert"> <p><?php foreach ($erros as $erro){echo $erro;} ?></p></div>
+    		<?php unset($_SESSION['erros']);
+    		}
     		?>
 			<div class="centralizar mb-2">
 				<h1 class="text-secundaria fonte text-center mt-3">Cadastre-se</h1>
@@ -74,7 +79,7 @@
 			<div class="centralizar mb-2">
 				<div class="input-group flex-nowrap">
                 	<span class="input-group-text" id="cpf">CPF/CNPJ</span>
-					<input type="text" name="cpf-cnpj" class="form-control" placeholder="CPF/CNPJ" aria-describedby="cpf">
+					<input type="text" id="cpf-cnpj" name="cpf-cnpj" class="form-control" placeholder="CPF/CNPJ" aria-describedby="cpf">
                 </div>
 			</div>
 			<div class="centralizar mb-2">
@@ -85,8 +90,8 @@
 			</div>
 			<div class="centralizar mb-2">
 				<div class="input-group flex-nowrap">
-                	<span class="input-group-text" id="contato">Contato</span>
-					<input type="text" name="contato" class="form-control" placeholder="Contato" aria-label="Contato" aria-describedby="email">
+                	<span class="input-group-text">Contato</span>
+					<input type="text" id="contato" name="contato" class="form-control" placeholder="Contato" aria-label="Contato" aria-describedby="email">
                 </div>
 			</div>
 			<div class="centralizar mb-2">
@@ -134,6 +139,7 @@
 	<script src="../Framework/js/bootstrap.min.js"></script>
 	<!-- JQuery -->
 	<script src="../Framework/jquery-3.6.0.min.js"></script>
+	<script src="../Framework/jquery.mask.js"></script>
 	<!-- JavaScript -->
 	<script type="text/javascript" src="../js/cadastro.js"></script>
 </body>
