@@ -2,10 +2,15 @@
 session_start();
 include '../modelo/aluno.class.php';
 include '../dao/alunodao.class.php';
+include '../util/padronizacao.class.php';
+include '../util/seguranca.class.php';
+include '../util/validacao.class.php';
 
 if(isset($_GET['op'])){
 
-    switch ($_GET['op']) {
+    $OP = filter_var(@$_REQUEST['op'],FILTER_SANITIZE_NUMBER_INT);
+    
+    switch ($OP) {
         
         
         //Cadastrar aluno
@@ -13,13 +18,34 @@ if(isset($_GET['op'])){
         
         $erro = array();
         
+        $cpf = filter_var(@$_POST['cpf-cnpj'],FILTER_SANITIZE_STRING);
+        if(!Validacao::validarCPF($cpf)){
+            $erro[] = '<br>CPF Inválido';
+        }
+        $nome = filter_var(@$_POST['nome'],FILTER_SANITIZE_STRING);
+        if(!Validacao::validarNome($nome)){
+            $erro[] = '<br>Nome Inválido';
+        }
+        $email = filter_var(@$_POST['email'],FILTER_SANITIZE_EMAIL);
+        if(!Validacao::validarEmail($email)){
+            $erro[] = '<br>E-mail Inválido';
+        }
+        $contato = filter_var(@$_POST['contato'],FILTER_SANITIZE_STRING);
+        if(!Validacao::validarContato($contato)){
+        	$erro[] = '<br>Contato Inválido';
+        }
+        $senha = filter_var(@$_POST['senha'],FILTER_SANITIZE_STRING);
+        if(!Validacao::validarSenha($senha)){
+        	$erro[] = '<br>Senha Inválida';
+        }
+        
         if (count($erro)==0) {
             $al = new Aluno;
-            $al->cpf_cnpj = $_POST['cpf-cnpj'];
-            $al->nome = $_POST['nome'];
-            $al->email = $_POST['email'];
-            $al->contato = $_POST['contato'];
-            $al->senha = $_POST['senha'];
+            $al->cpf_cnpj = Padronizacao::padronizarCPF($cpf);
+            $al->nome = Padronizacao::padronizarNome($nome);
+            $al->email = Padronizacao::padronizarEmail($email);
+            $al->contato = Padronizacao::padronizarContato($contato);
+            $al->senha = Seguranca::criptografar($senha);
             
             $alDAO = new AlunoDAO;
             $alDAO->cadastrarAluno($al);
