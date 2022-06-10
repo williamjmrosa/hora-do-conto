@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -46,7 +47,11 @@
 	</header>
 	
 	<!-- Artigo -->
-	
+	<?php 
+            if (isset($_SESSION['msg'])){
+    		?>
+    		<div class="alert alert-success m-2" role="alert"> <p><?php echo $_SESSION['msg']; ?></p></div>
+    		<?php unset($_SESSION['msg']);}?>
 	<div id="artigo" class="d-md-flex flex-row primaria mb-4 pb-4">
 		<div class="mt-4 ms-5">
 			<ul class="check-list">
