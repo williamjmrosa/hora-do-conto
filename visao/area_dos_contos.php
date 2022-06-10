@@ -1,4 +1,19 @@
 <?php
+session_start();
+include '../util/controle-login.class.php';
+ControleLogin::verificarAcesso();
+if($_SESSION['privateTipo'] == 1){
+	//Responsavel
+}else if($_SESSION['privateTipo'] == 2){
+	//Aluno
+	include '../modelo/aluno.class.php';
+}else if($_SESSION['privateTipo'] == 3){
+	//Professor
+	include '../modelo/professor.class.php';
+}else{
+	//Instituição
+}
+$cli = unserialize($_SESSION['privateUser']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,14 +47,14 @@
 						<button class="btn fonte dropdown-toggle" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
 							aria-expanded="false">
-							<img alt="" src="../img/person_outline.svg"> Bem-vindo, Teste!
+							<img alt="" src="../img/person_outline.svg"> Bem-vindo, <?php echo $cli->nome?>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li><a class="dropdown-item" href="#">Action</a></li>
+							<li><a class="dropdown-item" href="#">Perfil</a></li>
 							<li><a class="dropdown-item" href="#">Another action</a></li>
-							<li><a class="dropdown-item" href="#">Something else here</a></li>
+							<li><a href="../controle/login-controle.php?op=2" class="dropdown-item" href="#">Sair</a></li>
 						</ul>
-						<a class="fonte" href="#">Sair<img class="ms-2" alt="Sair"
+						<a class="fonte" href="../controle/login-controle.php?op=2">Sair<img class="ms-2" alt="Sair"
 							src="../img/inputsair.svg">
 						</a>
 					</div>
