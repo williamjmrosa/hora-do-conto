@@ -1,5 +1,5 @@
 <?php
-require '../persistencia/conexaobanco.class.php';
+require_once '../persistencia/conexaobanco.class.php';
 
 Class AlunoDAO{
     
@@ -28,6 +28,18 @@ Class AlunoDAO{
             echo 'Erro ao cadastrar aluno! ' . $exc;
         }//fecha catch
     }//fecha castrar aluno
+    
+    //Login Aluno
+    public function verificarAluno($al) {
+    	try {
+    		$stat = $this->conexao->query("select * from aluno where email = '$al->email' and senha = '$al->senha'");
+    		$aluno = null;
+    		$aluno = $stat->fetchObject('Aluno');
+    		return $aluno;
+    	} catch (PDOException $exc) {
+    		echo 'Erro ao verificar Aluno! '.$exc;
+    	}//Fecha catch
+    }
     
 }//Fecha classe
 ?>
