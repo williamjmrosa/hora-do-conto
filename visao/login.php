@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -46,15 +47,38 @@
 	</header>
 
 	<div class="align-middle container d-flex justify-content-center mb-5 mt-5">
-		<form class="fundo-branco w-75 rounded-3">
+		<form class="fundo-branco w-75 rounded-3 fonte-cinza" method="POST" action="../controle/login-controle.php?op=1">
+			<?php 
+			if(isset($_SESSION['msg'])){?>
+    		<div class="alert alert-danger m-2" role="alert"> <p><?php echo $_SESSION['msg']; ?></p></div>
+    		<?php unset($_SESSION['msg']);}?>
 			<h1 class="fonte-secundaria text-secundaria text-center">Entrar</h1>
+			<div class="text-center mb-3 mt-4">
+				<div class="form-check form-check-inline fonte-cinza">
+					<input class="form-check-input" type="radio" name="tipoLogin" id="exampleRadios1" value="1" checked>
+					<label class="form-check-label" for="exampleRadios1">Responsavel</label>
+				</div>
+				<div class="form-check form-check-inline fonte-cinza">
+					<input class="form-check-input" type="radio" name="tipoLogin" id="exampleRadios2" value="2">
+					<label class="form-check-label" for="exampleRadios2">Aluno</label>
+				</div>
+				<div class="form-check form-check-inline fonte-cinza">
+					<input class="form-check-input" type="radio" name="tipoLogin" id="exampleRadios3" value="3">
+					<label class="form-check-label" for="exampleRadios3">Professor</label>
+				</div>
+				<div class="form-check form-check-inline fonte-cinza">
+					<input class="form-check-input" type="radio" name="tipoLogin" id="exampleRadios3" value="4">
+					<label class="form-check-label" for="exampleRadios3">Instituição</label>
+				</div>
+			</div>
+				
 			<div class="mb-3 centralizar">
 				<label for="email" class="form-label fonte-cinza">Email</label>
-				<input type="email" class="form-control" id="email">
+				<input type="email" name="email" class="form-control" id="email">
 			</div>
 			<div class="mb-3 centralizar">
 				<label for="senha" class="form-label fonte-cinza">Senha</label>
-				<input type="password" class="form-control"
+				<input type="password" name="senha" class="form-control"
 					id="senha">
 				<div id="esqueceusenha" class="form-text">Esqueceu sua senha? <a href="#" class="text-secundaria text-decoration-underline">Recuperar</a></div>
 			</div>
