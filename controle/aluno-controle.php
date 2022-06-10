@@ -14,9 +14,14 @@ if(isset($_GET['op'])){
         
         
         //Cadastrar aluno
-        case 1:
-        
+        case 1: 	
+        	
         $erro = array();
+        
+        if(!(isset($_POST['cpf-cnpj']) && isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['contato']) && isset($_POST['senha']))){
+        	header('location:../index.php');
+        	break;
+        }
         
         $cpf = filter_var(@$_POST['cpf-cnpj'],FILTER_SANITIZE_STRING);
         if(!Validacao::validarCPF($cpf)){
