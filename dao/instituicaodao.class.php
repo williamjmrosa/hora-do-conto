@@ -39,7 +39,7 @@ Class InstituicaoDAO{
 			return $instituicao;
 		} catch (PDOException $exc) {
 			echo 'Erro ao verificar Instituição! '.$exc;
-		}//fecha catch
+		}//fecha catch.
 	}
 }
 ?>
