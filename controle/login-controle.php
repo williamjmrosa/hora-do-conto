@@ -4,6 +4,7 @@ include '../util/seguranca.class.php';
 include '../util/controle-login.class.php';
 include '../modelo/aluno.class.php';
 include '../modelo/professor.class.php';
+include '../modelo/responsavel.class.php';
 
 if (isset($_GET['op'])) {
 	$OP = filter_var(@$_REQUEST['op'],FILTER_SANITIZE_NUMBER_INT);
@@ -18,7 +19,7 @@ if (isset($_GET['op'])) {
 			$cliente = null;
 			
 			if($tipo == 1){
-				
+				$cliente = new Responsavel;
 			}else if($tipo == 2){
 				$cliente = new Aluno;
 			}else if($tipo == 3){

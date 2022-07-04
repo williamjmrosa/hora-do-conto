@@ -4,6 +4,7 @@ include '../util/controle-login.class.php';
 ControleLogin::verificarAcesso();
 if($_SESSION['privateTipo'] == 1){
 	//Responsavel
+	include '../modelo/responsavel.class.php';
 }else if($_SESSION['privateTipo'] == 2){
 	//Aluno
 	include '../modelo/aluno.class.php';
