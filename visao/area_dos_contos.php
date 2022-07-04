@@ -63,42 +63,12 @@ $cli = unserialize($_SESSION['privateUser']);
 		</div>
 	</header>
 	<!-- Menu Lateral -->
-	<div class="d-inline-block">
-		<div class="d-flex flex-column flex-shrink-0 p-0 text-white terciaria"
-			style="width: auto;">
-			<a href="../visao/area_dos_contos.php"
-				class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-				<img class="w-100" alt="Hora do Conto" src="../img/logo2.svg">
-			</a> <input type="text" placeholder="Pesquisar..."
-				class="perquisar border-0 border-bottom bg-transparent border-dark mb-4 m-3">
-
-			<ul id="menu-lateral"
-				class="nav nav-pills flex-column mb-auto menu-lateral pb-2">
-				<li class="nav-item"><a href="#" class="nav-link text-white abrir"
-					aria-current="page">Atividade</a>
-					<ul class="list-unstyled ">
-						<li class="mb-2"><a class="text-secundaria ms-4" href="">Conto 1:
-								Teste</a></li>
-						<li class="mb-2"><a class="text-secundaria ms-4 " href="">Atividade</a></li>
-					</ul></li>
-				<li><a href="#" class="nav-link text-white abrir">Atividade 2</a>
-					<ul class="list-unstyled ">
-						<li class="mb-2"><a class="text-secundaria ms-4" href="">Conto 1:
-								Teste</a></li>
-						<li class="mb-2"><a class="text-secundaria ms-4 " href="">Atividade</a></li>
-					</ul></li>
-				<li><a class="nav-link text-white abrir" href="#"
-					class="nav-link text-white">Atividade 3</a></li>
-				<li><a class="nav-link text-white abrir" href="#"
-					class="nav-link text-white">Atividade 4</a></li>
-				<li><a class="nav-link text-white abrir" href="#"
-					class="nav-link text-white">Atividade 5</a></li>
-			</ul>
-		</div>
+	<div class="d-inline-block w-30" id="menuLateral">
+		
 	</div>
 	<!-- Inicio entrada de conteudo -->
 	<!-- Atividades -->
-	<div id="atividades" class="d-inline-block align-top ms-4 me-4 w-60">
+	<div id="atividades" class="d-inline-block align-top w-70">
 		
 	</div>
 
@@ -119,7 +89,6 @@ $cli = unserialize($_SESSION['privateUser']);
 	<!-- JQuery -->
 	<script src="../Framework/jquery-3.6.0.min.js"></script>
 	<!-- JavaScript -->
-	<script type="text/javascript" src="../js/menuLateral.js"></script>
 	<script type="text/javascript" src="../js/area-do-conto.js"></script>
 	
 </body>
