@@ -51,8 +51,8 @@ $cli = unserialize($_SESSION['privateUser']);
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li><a class="dropdown-item" href="#">Perfil</a></li>
-							<li><a class="dropdown-item" href="#">Another action</a></li>
-							<li><a href="../controle/login-controle.php?op=2" class="dropdown-item" href="#">Sair</a></li>
+							<li><a class="dropdown-item" id="criar-conto">Criar Conto</a></li>
+							<li><a href="../controle/login-controle.php?op=2" class="dropdown-item">Sair</a></li>
 						</ul>
 						<a class="fonte" href="../controle/login-controle.php?op=2">Sair<img class="ms-2" alt="Sair"
 							src="../img/inputsair.svg">
@@ -98,24 +98,7 @@ $cli = unserialize($_SESSION['privateUser']);
 	</div>
 	<!-- Inicio entrada de conteudo -->
 	<!-- Atividades -->
-	<div class="d-inline-block align-top ms-4 me-4">
-		<iframe width="560" height="315"
-			src="https://www.youtube.com/embed/nEK9EO7hl6Q"
-			title="YouTube video player" frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen></iframe>
-		<div class="d-inline-block align-top text-center terciaria">
-			<h4 class="text-center">Anotações</h4>
-			<textarea class="rounded ms-3 me-3 mb-2" rows="15" cols="40"></textarea>
-		</div>
-		<hr style="border: 2px solid #FFB82F;">
-		<form action="">
-		<h3>Comentários e Duvidas</h3>
-		<textarea id="comentario" name="comentario" class="textarea-fundo" rows="5" cols="120"></textarea>
-		<div class="text-end">
-			<a class="btn fonte secundaria ps-5 pe-5">Enviar</a>
-		</div>
-		</form>
+	<div id="atividades" class="d-inline-block align-top ms-4 me-4 w-60">
 		
 	</div>
 
@@ -136,5 +119,7 @@ $cli = unserialize($_SESSION['privateUser']);
 	<!-- JQuery -->
 	<script src="../Framework/jquery-3.6.0.min.js"></script>
 	<!-- JavaScript -->
-	<script type="text/javascript" src="../Framework/menuLateral.js"></script>
+	<script type="text/javascript" src="../js/menuLateral.js"></script>
+	<script type="text/javascript" src="../js/area-do-conto.js"></script>
+	
 </body>
