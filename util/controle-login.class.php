@@ -1,16 +1,28 @@
 <?php
 include '../dao/alunodao.class.php';
 include '../dao/professordao.class.php';
+include '../dao/responsaveldao.class.php';
 Class ControleLogin{
 	public static function logar($cliente,$tipo) {
 		switch ($tipo) {
 			case 1:
 				//Logar Responsavel
+				$respDAO = new ResponsavelDAO;
+				$responsavel = $respDAO->verificarResponsavel($cliente);
 				
+				if($responsavel && !is_null($responsavel)){
+					//Foi encontrado responsavel no banco
+					$_SESSION['privateUser']=serialize($responsavel);
+					$_SESSION['privateTipo']= $tipo;
+					//Direciona para areas dos contos
+					header('location:../visao/area_dos_contos.php');
+				}else{
+					$_SESSION['msg'] = "email/senha inválido(s)";
+					header('location:../visao/login.php');
+				}
 			break;
 			case 2:
 				//Login Aluno
-				//include '';
 				$alDAO = new AlunoDAO;
 				$aluno = $alDAO->verificarAluno($cliente);
 				
@@ -29,7 +41,6 @@ Class ControleLogin{
 			
 			case 3:
 				//Login Professor
-				//include '';
 				$profDAO = new ProfessorDAO;
 				$professor = $profDAO->verificarProfessor($cliente);
 				
