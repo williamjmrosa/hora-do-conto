@@ -10,6 +10,13 @@ body, .fonte {
 	color: #FFF !important;
 }
 
+.hr-questao{
+	height: 2px !important;
+	color: #FFB82F;
+	opacity: 1;
+	
+}
+
 .textarea-fundo{
 	background: #FFFFFF;
 	opacity: 0.56;
