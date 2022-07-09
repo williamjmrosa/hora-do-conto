@@ -85,5 +85,25 @@ $prof = unserialize ( $_SESSION ['privateUser'] );
 		</table>
 	</div>
 </div>
-
+<script src="../Framework/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../js/cadastrar-conto.js"></script>
+<script type="text/javascript">
+	<?php
+	
+	
+	if(isset($_SESSION['tela'])){
+		$ID_CONTO = $_SESSION['id'];
+		unset($_SESSION['id']);
+	
+		$tela = $_SESSION['tela'];
+		unset($_SESSION['tela']);
+		if($tela == 'questao'){
+		?>
+				
+				$("#conto").load("../visao/criar_questoes.php?id="<?php echo $ID_CONTO?>;
+				$("#lista").load("../visao/listar-questoes-conto.php?id="<?php echo $ID_CONTO?>);
+				<?php 
+			
+		}
+	}?>
+</script>

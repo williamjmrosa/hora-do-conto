@@ -69,7 +69,7 @@ $cli = unserialize($_SESSION['privateUser']);
 	</div>
 	<!-- Inicio entrada de conteudo -->
 	<!-- Atividades -->
-	<div id="atividades" class="d-inline-block align-top w-70">
+	<div id="atividades" class="d-inline-block align-top w-60">
 		
 	</div>
 
@@ -91,5 +91,14 @@ $cli = unserialize($_SESSION['privateUser']);
 	<script src="../Framework/jquery-3.6.0.min.js"></script>
 	<!-- JavaScript -->
 	<script type="text/javascript" src="../js/area-do-conto.js"></script>
+	<script type="text/javascript">
+	<?php 
+			if(isset($_SESSION['tela'])){?>
+					$("#atividades").load("../visao/criar-conto.php");
+			<?php }else{?>
+					$("#atividades").load("../visao/home-hora-do-conto.php");
+			<?php }
+			?>
+	</script>
 	
 </body>

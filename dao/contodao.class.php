@@ -64,6 +64,21 @@ Class ContoDAO{
 		
 	}
 	
+	//Listar todos os contos
+	public function listarContos(){
+		try {
+			$stat = $this->conexao->prepare("SELECT * FROM conto");
+			$stat->execute();
+			
+			$array = $stat->fetchAll(PDO::FETCH_CLASS, 'Conto');
+			
+			return $array;
+			
+		} catch (PDOException $exc) {
+			echo 'Erro ao listar contos';
+		}
+	}
+	
 	//Buscar conto
 	public function buscarConto($id){
 		try {

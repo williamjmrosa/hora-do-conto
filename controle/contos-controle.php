@@ -34,6 +34,8 @@ if(isset($_GET['op']) && @$_SESSION['privateTipo'] == 3){
 				$erro[] = '<br>Nome Inválido';
 			}
 			
+			$_SESSION['tela'] = 'conto';
+			
 			if (count($erro)==0) {
 				$c = new Conto;
 				$c->titulo = $titulo;
@@ -49,6 +51,8 @@ if(isset($_GET['op']) && @$_SESSION['privateTipo'] == 3){
 				$_SESSION['erros'] = serialize($erro);
 				header('location:../visao/area_dos_contos.php');
 			}
+			
+			
 			
 			break;
 			

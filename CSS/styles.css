@@ -106,6 +106,10 @@ body, .fonte {
 	width: 60% !important;
 }
 
+.w-30{
+	width: 30% !important;
+}
+
 a{
 	text-decoration: none !important;	
 }

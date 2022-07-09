@@ -41,6 +41,9 @@ if(isset($_GET['op']) && @$_SESSION['privateTipo'] == 3){
 			
 			$alternativa = @$_POST['alternativa'];
 			
+			$_SESSION['tela'] = 'questao';
+			$_SESSION['id'] = $idConto;
+			
 			if (count($erro)==0) {
 				$q = new Questao;
 				$q->resposta = $tipoQuestao == 3? serialize($resposta):$resposta;
