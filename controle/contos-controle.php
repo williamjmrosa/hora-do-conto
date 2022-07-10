@@ -15,7 +15,7 @@ if(isset($_GET['op']) && @$_SESSION['privateTipo'] == 3){
 	switch ($OP) {
 		
 		
-		//Cadastrar aluno
+		//Cadastrar conto
 		case 1:
 			
 			$erro = array();
@@ -59,6 +59,20 @@ if(isset($_GET['op']) && @$_SESSION['privateTipo'] == 3){
 			
 			//Alterar Contos
 		case 2:
+			
+			break;
+			//Buscar conto home
+		case 4: 
+			
+			$c = new ContoDAO;
+			if(isset($_GET['id'])){
+				$ID = filter_var($_GET['id'],FILTER_SANITIZE_NUMBER_INT);
+				$conto = $c->buscarConto($ID);
+			}else{
+				$conto = $c->buscarContoHome();
+			}
+			$_SESSION['conto'] = serialize($conto);
+			header('location:../visao/area_dos_contos.php');
 			
 			break;
 		//volta a home

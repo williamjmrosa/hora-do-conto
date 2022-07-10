@@ -70,6 +70,22 @@ if(isset($_GET['op']) && @$_SESSION['privateTipo'] == 3){
 		case 2:
 			
 			break;
+		//Buscar todas as questões
+		case 4:
+			$ID = filter_var($_GET['id'],FILTER_SANITIZE_NUMBER_INT);
+			
+			$qDAO = new QuestaoDAO;
+			$questoes = $qDAO->buscarQuestoesConto($ID);
+			
+			$_SESSION['tela'] = 'questionario';
+			
+			$_SESSION['id_conto'] = $ID;
+			
+			$_SESSION['questionario'] = serialize($questoes);
+			header('location:../visao/area_dos_contos.php');
+			
+			break;
+			
 			//volta a home
 		default:
 			header('location:../index.php');
