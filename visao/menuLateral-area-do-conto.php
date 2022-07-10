@@ -22,9 +22,10 @@ include '../dao/questaodao.class.php';
 			?>
 				<li class="nav-item"><a href="#" class="nav-link text-white abrir"><?php echo $conto->titulo?></a>
 			<ul class="list-unstyled ">
-				<li class="mb-2"><a class="text-secundaria ms-4" href=""><?php echo "Conto ". ($chave + 1) ." : ".$conto->titulo?></a></li>
-				<li class="mb-2"><a class="text-secundaria ms-4 "
-					id="<?php echo $conto->id_conto?>">Atividade</a></li>
+				<li class="mb-2">
+					<a class="text-secundaria ms-4" href="../controle/contos-controle.php?op=4&id=<?php echo $conto->id_conto;?>">
+				<?php echo "Conto ". ($chave + 1) ." : ".$conto->titulo?></a></li>
+				<li class="mb-2"><a class="text-secundaria ms-4" href="../controle/questao-controle.php?op=4&id=<?php echo $conto->id_conto;?>">Atividade</a></li>
 			</ul></li>
 			<?php
 
