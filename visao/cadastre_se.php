@@ -1,4 +1,8 @@
-<?php session_start();?>
+<?php session_start();
+if(isset($_SESSION['privateUser'])){
+	header('location: ../visao/area_dos_contos.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
