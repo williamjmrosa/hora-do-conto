@@ -90,7 +90,21 @@ Class ContoDAO{
 			
 			return $conto;
 		} catch (PDOException $exc) {
-			echo 'Erro ao buscar conto';
+			echo 'Erro ao buscar conto '.$exc;
+		}
+	}
+	
+	//Buscar conto home
+	public function buscarContoHome(){
+		try {
+			$stat = $this->conexao->prepare("SELECT * FROM conto LIMIT 1");
+			$stat->execute();
+			
+			$conto = $stat->fetchObject('Conto');
+			return $conto;
+			
+		} catch (PDOException $exc) {
+			echo 'Erro ao buscar conto home '.$exc;
 		}
 	}
 	
