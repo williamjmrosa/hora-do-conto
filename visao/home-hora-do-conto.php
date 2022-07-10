@@ -1,7 +1,12 @@
-<?php session_start();?>
+<?php session_start();
+include '../modelo/conto.class.php';
+if(isset($_SESSION['conto'])){
+	$conto = unserialize($_SESSION['conto']);
+	unset($_SESSION['conto']);
+	$conto->video = str_replace("watch?v=", "embed/", $conto->video);
+?>
 <div class="ratio ratio-16x9 w-60 d-inline-block">
-	<iframe src="https://www.youtube.com/embed/nEK9EO7hl6Q"
-		title="YouTube video" allowfullscreen></iframe>
+	<iframe src="<?php echo $conto->video?>" title="YouTube video" allowfullscreen></iframe>
 </div>
 <!--  <iframe width="560" height="315"
 			src="https://www.youtube.com/embed/nEK9EO7hl6Q"
@@ -21,3 +26,6 @@
 		<a class="btn fonte secundaria ps-5 pe-5">Enviar</a>
 	</div>
 </form>
+<?php
+}
+?>
