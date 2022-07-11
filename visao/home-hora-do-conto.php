@@ -4,6 +4,7 @@ if(isset($_SESSION['conto'])){
 	$conto = unserialize($_SESSION['conto']);
 	unset($_SESSION['conto']);
 	$conto->video = str_replace("watch?v=", "embed/", $conto->video);
+	$conto->video = str_replace("&", "?", $conto->video);
 ?>
 <div class="ratio ratio-16x9 w-60 d-inline-block">
 	<iframe src="<?php echo $conto->video?>" title="YouTube video" allowfullscreen></iframe>
