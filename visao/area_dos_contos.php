@@ -56,7 +56,9 @@ $cli = unserialize ( $_SESSION ['privateUser'] );
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li><a class="dropdown-item" href="#">Perfil</a></li>
+							<?php if($_SESSION['privateTipo'] == 3){?>
 							<li><a class="dropdown-item" id="criar-conto">Criar Conto</a></li>
+							<?php }?>
 							<li><a href="../controle/login-controle.php?op=2"
 								class="dropdown-item">Sair</a></li>
 						</ul>
