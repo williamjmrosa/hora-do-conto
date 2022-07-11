@@ -10,7 +10,7 @@ if (isset ( $_SESSION ['questionario'] ) && isset ( $_SESSION ['id_conto'] ) && 
 	$questões = unserialize ( $_SESSION ['questionario'] );
 	$cDAO = new ContoDAO ();
 	$conto = $cDAO->buscarConto ( $_SESSION ['id_conto'] );
-	//unset($_SESSION['tela']);
+	unset($_SESSION['tela']);
 	$aluno = unserialize($_SESSION['privateUser']);
 	
 	
