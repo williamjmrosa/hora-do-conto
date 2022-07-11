@@ -106,7 +106,7 @@ $cli = unserialize ( $_SESSION ['privateUser'] );
 		}
 	} else {
 		?>
-					$("#atividades").load("../visao/home-hora-do-conto.php");
+			$("#atividades").load("../visao/home-hora-do-conto.php");
 			<?php
 	}
 	?>

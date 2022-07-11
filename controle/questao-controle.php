@@ -5,7 +5,7 @@ include '../dao/questaodao.class.php';
 include '../util/padronizacao.class.php';
 include '../util/validacao.class.php';
 
-if(isset($_GET['op']) && @$_SESSION['privateTipo'] == 3){
+if(isset($_GET['op']) && isset($_SESSION['privateUser'])){
 	
 	$OP = filter_var(@$_REQUEST['op'],FILTER_SANITIZE_NUMBER_INT);
 	
@@ -77,7 +77,7 @@ if(isset($_GET['op']) && @$_SESSION['privateTipo'] == 3){
 			$qDAO = new QuestaoDAO;
 			$questoes = $qDAO->buscarQuestoesConto($ID);
 			
-			$_SESSION['tela'] = 'questionario';
+			$_SESSION['tela'] = "questionario";
 			
 			$_SESSION['id_conto'] = $ID;
 			
