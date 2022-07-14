@@ -25,7 +25,10 @@ $prof = unserialize ( $_SESSION ['privateUser'] );
 		for($i = 0; $i < sizeof ( $erros ); $i ++) {
 			echo '<p class="mb-1">' . str_replace ( '<br>', "", $erros [$i] ) . '</p>';
 		}
-		unset ( $_SESSION ['erros'] );
+		if(@$_SESSION['tela'] != "questao"){
+			
+			unset ( $_SESSION ['erros'] );
+		}
 		?>
 		</div>
 	<?php
@@ -85,7 +88,6 @@ $prof = unserialize ( $_SESSION ['privateUser'] );
 		</table>
 	</div>
 </div>
-<script src="../Framework/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../js/cadastrar-conto.js"></script>
 <script type="text/javascript">
 	<?php
@@ -94,16 +96,12 @@ $prof = unserialize ( $_SESSION ['privateUser'] );
 	if(isset($_SESSION['tela'])){
 		$ID_CONTO = $_SESSION['id'];
 		unset($_SESSION['id']);
-	
 		$tela = $_SESSION['tela'];
 		unset($_SESSION['tela']);
-		if($tela == 'questao'){
-		?>
-				
-				$("#conto").load("../visao/criar_questoes.php?id="<?php echo $ID_CONTO?>;
-				$("#lista").load("../visao/listar-questoes-conto.php?id="<?php echo $ID_CONTO?>);
-				<?php 
-			
+		if($tela == "questao"){
+			echo "$('#conto').load('../visao/criar_questoes.php?id=$ID_CONTO');";
+			echo "$('#lista').load('../visao/listar-questoes-conto.php?id=$ID_CONTO');";
 		}
-	}?>
+	}
+		?>
 </script>
