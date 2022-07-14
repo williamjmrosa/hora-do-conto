@@ -41,7 +41,7 @@ if(isset($_GET['op']) && isset($_SESSION['privateUser'])){
 			
 			$alternativa = @$_POST['alternativa'];
 			
-			$_SESSION['tela'] = 'questao';
+			$_SESSION['tela'] = "questao";
 			$_SESSION['id'] = $idConto;
 			
 			if (count($erro)==0) {
