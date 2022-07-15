@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once '../persistencia/conexaobanco.class.php';
 
 Class QuestionarioDAO{
@@ -45,6 +45,23 @@ Class QuestionarioDAO{
 			echo 'Erro ao buscar questões realizadas '.$exc;
 		}
 	}
+	
+	//Excluir todas as questões pelo questao
+	public function excluirPeloIDQuestao($id) {				
+	
+		try {
+			
+			$stat = $this->conexao->prepare("DELETE FROM realiza WHERE questao = ?");
+			$stat->bindValue(1, $id);
+			
+			$stat->execute();
+			
+		} catch (PDOException $exc) {
+			echo "Erro ao excluir questão pelo ID. ".$exc;
+		}
+		
+	}
+	
 }
 
 ?>

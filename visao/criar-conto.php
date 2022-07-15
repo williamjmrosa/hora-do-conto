@@ -14,8 +14,9 @@ $prof = unserialize ( $_SESSION ['privateUser'] );
 	<?php echo $_SESSION['msg'];?>
 		</div>
 	<?php
-
-		unset ( $_SESSION ['msg'] );
+		if(@$_SESSION['tela'] != "questao"){
+			unset ( $_SESSION ['msg'] );
+		}
 	}
 	if (isset ( $_SESSION ['erros'] )) {
 		?>
@@ -53,7 +54,7 @@ $prof = unserialize ( $_SESSION ['privateUser'] );
 	</form>
 </div>
 <div id="lista" class="w-100 d-inline-block mt-2">
-	<div class="terciaria rounded p-4">
+	<div class="terciaria rounded p-4 table-responsive">
 		<table class="table fundo">
 			<thead>
 				<tr>
@@ -72,10 +73,11 @@ $prof = unserialize ( $_SESSION ['privateUser'] );
 		
 				<tr>
 					<th scope="row"><?php echo $conto->id_conto;?></th>
-					<th scope="row"><?php echo $conto->video;?></th>
-					<th scope="row"><?php echo $conto->titulo;?></th>
-					<th scope="row"><a id="<?php echo $conto->id_conto;?>"
+					<th><?php echo $conto->video;?></th>
+					<th><?php echo $conto->titulo;?></th>
+					<th><a id="<?php echo $conto->id_conto;?>"
 						class="btn secundaria criarQuestao">Criar Questão</a></th>
+					<th><a id="<?php echo $conto->id_conto;?>"class="btn secundaria criarQuestao">Excluir</a></th>
 				</tr>
 
 			

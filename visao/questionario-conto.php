@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../modelo/questao.class.php';
 include '../dao/contodao.class.php';
 include '../dao/questionariodao.class.php';

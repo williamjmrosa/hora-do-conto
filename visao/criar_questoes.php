@@ -1,12 +1,25 @@
 <?php
 session_start ();
 include '../modelo/conto.class.php';
+include '../modelo/questao.class.php';
 include '../dao/contodao.class.php';
-if (isset ( $_GET ['id'] )) {
+
+if(isset($_SESSION['alterarQuestao'])){
+	$alterar = unserialize($_SESSION['alterarQuestao']);
+	$ID = $alterar->id_conto;
+	$cDAO = new ContoDAO();
+	$conto = $cDAO->buscarConto($ID);
+	$OP = 2;
+	$submit = "Alterar Questão";
+	unset($_SESSION['alterarQuestao']);
+	
+}elseif (isset ( $_GET ['id'] )) {
 	$ID = filter_var ( @$_GET ['id'], FILTER_SANITIZE_NUMBER_INT );
 	$cDAO = new contoDAO ();
 	$conto = $cDAO->buscarConto ( $ID );
-} else {
+	$OP = 1;
+	$submit = "Cadastrar Questão";	
+}else {
 	$_SESSION ['erros'] = 'Não foi aberto apartir de um conto';
 }
 ?>
@@ -39,15 +52,18 @@ if (isset ( $_GET ['id'] )) {
 	}
 	?>
 	<form class="terciaria rounded p-4"
-		action="../controle/questao-controle.php?op=1" method="POST">
+		action="../controle/questao-controle.php?op=<?php echo $OP;?>" method="POST">
 		<h2>Conto: <?php echo $conto->titulo;?></h2>
 		<h4 class="fs-1">Criar Questão</h4>
 		<div class="questao form-floating">
 			<input value="<?php echo $conto->id_conto?>" name="idConto"
 				hidden="true">
+			<?php if(isset($alterar)){?>
+				<input value="<?php echo $alterar->id_questao?>" name="idQuestao" hidden="true">
+			<?php }?>
 			<div class="form-floating">
 				<textarea class="form-control" placeholder="Enunciado aqui"
-					id="floatingTextarea2" name="enunciado" style="height: 100px"></textarea>
+					id="floatingTextarea2" name="enunciado" style="height: 100px"><?php echo isset($alterar)?  $alterar->enunciado:"";?></textarea>
 				<label class="fonte-cinza">Enunciado da questão</label>
 			</div>
 			<div class="mt-4 mb-4">
@@ -73,7 +89,7 @@ if (isset ( $_GET ['id'] )) {
 			</div>
 		</div>
 		<div class="pt-2">
-			<button class="btn secundaria fonte" type="submit">Cadastrar Conto</button>
+			<button class="btn secundaria fonte" type="submit"><?php echo $submit?></button>
 		</div>
 	</form>
 </div>

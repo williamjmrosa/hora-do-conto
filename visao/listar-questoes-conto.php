@@ -3,8 +3,8 @@ session_start();
 include '../modelo/questao.class.php';
 include '../dao/questaodao.class.php';
 
-if(isset($_GET['id'])){
-	$ID = filter_var($_GET['id'],FILTER_SANITIZE_NUMBER_INT);
+if(isset($_REQUEST['id'])){
+	$ID = filter_var($_REQUEST['id'],FILTER_SANITIZE_NUMBER_INT);
 }else{
 	header('location:../visao/area_dos_contos.php');
 }
@@ -43,8 +43,8 @@ if(isset($_GET['id'])){
 				}
 				?></th>
 				<th><?php echo $questao->enunciado;?></th>
-				<th><a class="btn fonte secundaria">Alterar Questão</a></th>
-				<th><a class="btn fonte secundaria">Excluir</a></th>
+				<th><a class="btn fonte secundaria" href="../controle/questao-controle.php?op=5&id_questao=<?php echo $questao->id_questao?>">Alterar Questão</a></th>
+				<th><a class="btn fonte secundaria" href="../controle/questao-controle.php?op=3&id_questao=<?php echo $questao->id_questao?>&conto=<?php echo $ID?>">Excluir</a></th>
 				</tr>
 		
 	<?php }?>

@@ -1,20 +1,9 @@
 /**
  * 
  */
-
- $(document).ready(function(){
-	
-	$(".criarQuestao").click(function(){
-		var id = $(this).attr("id");
-		$("#conto").load("../visao/criar_questoes.php?id="+id);
-		$("#lista").load("../visao/listar-questoes-conto.php?id="+id);
-	});
-	
-	$(".tipoQuestao").click(function(){
-		var tipo = this.value;
-		var alternativas = $(this).parent().parent().children(".alternativas");//.closest(".alternativas"); 
-		alternativas.empty();
-		if(tipo == 1){
+ 
+ function criarTipoQuestao(tipo){
+	if(tipo == 1){
 			var div = '<div class="row m-2">'
 					+'<div class="col-auto">'
 					+'<input class="form-check-input" type="radio" name="resposta" id="A" value="0">'
@@ -23,7 +12,7 @@
 					+'<label class="col-form-label d-inline" for="A">A)</label>'
 					+'</div>'
 					+'<div class="col-auto">'
-					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposata da alternativa">'
+					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposta da alternativa">'
 					+'</div>'
 					+'</div>'
 					+'<div class="row m-2">'
@@ -34,7 +23,7 @@
 					+'<label class="col-form-label d-inline" for="B">B)</label>'
 					+'</div>'
 					+'<div class="col-auto">'
-					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposata da alternativa">'
+					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposta da alternativa">'
 					+'</div>'
 					+'</div>'
 					+'<div class="row m-2">'
@@ -45,7 +34,7 @@
 					+'<label class="col-form-label d-inline" for="C">C)</label>'
 					+'</div>'
 					+'<div class="col-auto">'
-					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposata da alternativa">'
+					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposta da alternativa">'
 					+'</div>'
 					+'</div>'
 					+'<div class="row m-2">'
@@ -56,7 +45,7 @@
 					+'<label class="col-form-label d-inline" for="D">D)</label>'
 					+'</div>'
 					+'<div class="col-auto">'
-					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposata da alternativa">'
+					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposta da alternativa">'
 					+'</div>'
 					+'</div>'
 					+'<div class="row m-2">'
@@ -67,7 +56,7 @@
 					+'<label class="col-form-label d-inline" for="E">E)</label>'
 					+'</div>'
 					+'<div class="col-auto">'
-					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposata da alternativa">'
+					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposta da alternativa">'
 					+'</div>'
 					+'</div>';
 		}else if(tipo == 2){
@@ -84,7 +73,7 @@
 					+'<label class="col-form-label d-inline" for="A">A)</label>'
 					+'</div>'
 					+'<div class="col-auto">'
-					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposata da alternativa">'
+					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposta da alternativa">'
 					+'</div>'
 					+'</div>'
 					+'<div class="row m-2">'
@@ -95,7 +84,7 @@
 					+'<label class="col-form-label d-inline" for="B">B)</label>'
 					+'</div>'
 					+'<div class="col-auto">'
-					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposata da alternativa">'
+					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposta da alternativa">'
 					+'</div>'
 					+'</div>'
 					+'<div class="row m-2">'
@@ -106,7 +95,7 @@
 					+'<label class="col-form-label d-inline" for="C">C)</label>'
 					+'</div>'
 					+'<div class="col-auto">'
-					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposata da alternativa">'
+					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposta da alternativa">'
 					+'</div>'
 					+'</div>'
 					+'<div class="row m-2">'
@@ -117,7 +106,7 @@
 					+'<label class="col-form-label d-inline" for="D">D)</label>'
 					+'</div>'
 					+'<div class="col-auto">'
-					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposata da alternativa">'
+					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposta da alternativa">'
 					+'</div>'
 					+'</div>'
 					+'<div class="row m-2">'
@@ -128,10 +117,28 @@
 					+'<label class="col-form-label d-inline" for="E">E)</label>'
 					+'</div>'
 					+'<div class="col-auto">'
-					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposata da alternativa">'
+					+'<input class="form-control" type="text" name="alternativa[]" placeholder="Resposta da alternativa">'
 					+'</div>'
 					+'</div>';
 		}
+		
+		return div;
+}
+
+ $(document).ready(function(){
+	
+	$(".criarQuestao").click(function(){
+		var id = $(this).attr("id");
+		$("#conto").load("../visao/criar_questoes.php?id="+id);
+		$("#lista").load("../visao/listar-questoes-conto.php?id="+id);
+	});
+	
+	$(".tipoQuestao").click(function(){
+		var tipo = this.value;
+		var alternativas = $(this).parent().parent().children(".alternativas");//.closest(".alternativas"); 
+		alternativas.empty();
+		
+		var div = criarTipoQuestao(tipo);
 		
 		alternativas.append(div);
 		
