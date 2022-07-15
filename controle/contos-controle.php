@@ -55,10 +55,31 @@ if(isset($_GET['op']) && isset($_SESSION['privateUser'])){
 			
 			
 			break;
-			
-			
+						
 			//Alterar Contos
 		case 2:
+			
+			break;
+			
+			//Excluir
+		case 3:
+			
+			if(isset($_GET['id']) && $_SESSION['privateTipo'] == 3){
+			$ID = filter_var(@$_GET['id'],FILTER_SANITIZE_NUMBER_INT);
+		
+			
+			$cDAO = new ContoDAO();
+			$cDAO->excluirConto($ID);
+			
+			$_SESSION['tela'] = 'conto';
+			
+			$_SESSION['msg'] = "Conto excluido com sucesso!";
+			
+			}else{
+				$_SESSION['erros'] = 'Entra Ilegal';
+			}
+			
+			header('location: ../visao/area_dos_contos.php');
 			
 			break;
 			//Buscar conto home

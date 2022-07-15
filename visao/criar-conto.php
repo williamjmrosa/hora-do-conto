@@ -77,7 +77,7 @@ $prof = unserialize ( $_SESSION ['privateUser'] );
 					<th><?php echo $conto->titulo;?></th>
 					<th><a id="<?php echo $conto->id_conto;?>"
 						class="btn secundaria criarQuestao">Criar Questão</a></th>
-					<th><a id="<?php echo $conto->id_conto;?>"class="btn secundaria criarQuestao">Excluir</a></th>
+					<th><a href="../controle/contos-controle.php?op=3&id=<?php echo $conto->id_conto;?>" class="btn secundaria criarQuestao">Excluir</a></th>
 				</tr>
 
 			

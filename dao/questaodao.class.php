@@ -1,5 +1,6 @@
 <?php
 require_once '../persistencia/conexaobanco.class.php';
+include_once '../dao/questionariodao.class.php';
 Class QuestaoDAO{
 	
 	private $conexao;
@@ -88,6 +89,24 @@ Class QuestaoDAO{
 			
 			$stat->execute();
 						
+			
+		} catch (PDOException  $exc) {
+			echo 'Erro ao excluir conto'.$exc;
+		}
+	}
+	
+	//Excluir questão pelo id_conto
+	public function excluirQuestaoIDConto($id) {
+		try {
+			$quesDAO = new QuestionarioDAO();
+			$quesDAO->excluirPeloIDConto($id);
+			
+			
+			$stat = $this->conexao->prepare("DELETE FROM questao WHERE id_conto=?");
+			$stat->bindValue(1, $id);
+			
+			$stat->execute();
+			
 			
 		} catch (PDOException  $exc) {
 			echo 'Erro ao excluir conto'.$exc;

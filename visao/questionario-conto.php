@@ -6,7 +6,6 @@ include '../dao/questionariodao.class.php';
 include '../modelo/realizaquestionario.class.php';
 include '../modelo/conto.class.php';
 include '../modelo/aluno.class.php';
-//session_start ();
 if (isset ( $_SESSION ['questionario'] ) && isset ( $_SESSION ['id_conto'] ) && isset($_SESSION['privateUser'])) {
 	$questões = unserialize ( $_SESSION ['questionario'] );
 	$cDAO = new ContoDAO ();

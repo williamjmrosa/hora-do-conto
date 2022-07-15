@@ -3,7 +3,7 @@ session_start ();
 include '../modelo/conto.class.php';
 include '../modelo/questao.class.php';
 include '../dao/contodao.class.php';
-include '../dao/questaodao.class.php';
+include_once '../dao/questaodao.class.php';
 ?>
 <div class="d-flex flex-column flex-shrink-0 p-0 text-white terciaria"
 	style="width: auto;">

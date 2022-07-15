@@ -46,6 +46,22 @@ Class QuestionarioDAO{
 		}
 	}
 	
+	//Excluir todas as questões pelo id_conto
+	public function excluirPeloIDConto($id) {
+		
+		try {
+			
+			$stat = $this->conexao->prepare("DELETE FROM realiza WHERE id_conto = ?");
+			$stat->bindValue(1, $id);
+			
+			$stat->execute();
+			
+		} catch (PDOException $exc) {
+			echo "Erro ao excluir questão pelo ID Conto. ".$exc;
+		}
+		
+	}
+	
 	//Excluir todas as questões pelo questao
 	public function excluirPeloIDQuestao($id) {				
 	
@@ -57,7 +73,7 @@ Class QuestionarioDAO{
 			$stat->execute();
 			
 		} catch (PDOException $exc) {
-			echo "Erro ao excluir questão pelo ID. ".$exc;
+			echo "Erro ao excluir questão pelo ID Questao. ".$exc;
 		}
 		
 	}

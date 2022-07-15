@@ -1,12 +1,12 @@
 <?php
-//session_start();
+session_start();
 include '../modelo/questao.class.php';
 include '../modelo/realizaquestionario.class.php';
 include '../dao/questionariodao.class.php';
 include '../dao/questaodao.class.php';
 include '../modelo/aluno.class.php';
 
-if(isset($_SESSION['privateUser']) && $_GET['op']){
+if(isset($_SESSION['privateUser']) && isset( $_GET['op'])){
 	$OP = filter_var($_GET['op'],FILTER_SANITIZE_STRING);
 	
 	$aluno = unserialize($_SESSION['privateUser']);

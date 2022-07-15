@@ -1,5 +1,6 @@
 <?php
 require_once '../persistencia/conexaobanco.class.php';
+include_once '../dao/questaodao.class.php';
 
 Class ContoDAO{
 	
@@ -43,6 +44,24 @@ Class ContoDAO{
 			
 		} catch (PDOException $exc) {
 			echo 'Erro ao cadastrar conto'.$exc;
+		}
+	}
+	
+	public function excluirConto($ID){
+		try {
+			
+			$qDAO = new QuestaoDAO();
+			$qDAO->excluirQuestaoIDConto($ID);
+			
+			$stat = $this->conexao->prepare("DELETE FROM contos WHERE id_conto = ?");
+			$stat->bindValue(1, $ID);
+			
+			$stat->execute();
+				
+			
+		} catch (PDOException $exc) {
+			echo 'Erro ao excluir conto '.$exc;
+		
 		}
 	}
 	
@@ -93,6 +112,7 @@ Class ContoDAO{
 			echo 'Erro ao buscar conto '.$exc;
 		}
 	}
+	
 	
 	//Buscar conto home
 	public function buscarContoHome(){
