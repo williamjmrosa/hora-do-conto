@@ -55,7 +55,7 @@ $cli = unserialize ( $_SESSION ['privateUser'] );
 							<img alt="" src="../img/person_outline.svg"> Bem-vindo, <?php echo $cli->nome?>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li><a class="dropdown-item" href="#">Perfil</a></li>
+							<li><a class="dropdown-item" href="../controle/perfil-controle.php?op=2">Perfil</a></li>
 							<?php if($_SESSION['privateTipo'] == 3){?>
 							<li><a class="dropdown-item" id="criar-conto">Criar Conto</a></li>
 							<?php }?>
@@ -101,7 +101,10 @@ $cli = unserialize ( $_SESSION ['privateUser'] );
 			?>
 			$("#atividades").load("../visao/questionario-conto.php");
 		<?php
-		} else {
+		} elseif($_SESSION['tela'] == 'perfil'){?>
+			$("#atividades").load("../visao/perfil.php");
+		<?php
+		}else {
 			?>
 			$("#atividades").load("../visao/criar-conto.php");
 			<?php

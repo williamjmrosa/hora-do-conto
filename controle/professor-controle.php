@@ -12,6 +12,7 @@ if(isset($_GET['op'])){
 	$OP = filter_var(@$_REQUEST['op'],FILTER_SANITIZE_NUMBER_INT);
 	
 	switch ($OP) {
+		//Cadastrar Professor
 		case 1:
 			if(!(isset($_POST['cpf-cnpj']) && isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['contato']) && isset($_POST['senha']))){
 				header('location:../index.php');
@@ -61,9 +62,28 @@ if(isset($_GET['op'])){
 			
 		break;
 		
-		//ALterar Aluno
+		//Alterar Professor
 		case 2:
-			
+			if(isset($_SESSION['AlterarCliente'])){
+				
+				$prof = unserialize($_SESSION['AlterarCliente']);
+				unset($_SESSION['AlterarCliente']);
+				$profDAO = new ProfessorDAO();
+				$profDAO->alterarProfessor($prof);
+				$_SESSION['msg'] = "Professor alterado com sucesso";
+				$novoPrivate = $profDAO->verificarProfessor($prof);
+				$_SESSION['privateUser'] = serialize($novoPrivate);
+				$_SESSION['perfil'] = serialize($novoPrivate);
+				
+			}else{
+				$erro = array();
+				$erro[] = "sem professor pra alterar";
+				$_SESSION['erros'] = serialize($erro);
+				
+			}
+			$_SESSION['tela'] = "perfil";
+			header("location: ../visao/area_dos_contos.php");
+			break;
 		//Volta a home
 		default:
 			header('location:../index.php');

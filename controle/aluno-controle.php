@@ -68,7 +68,26 @@ if(isset($_GET['op'])){
         
         //Alterar Aluno
         case 2:
-            
+        	if(isset($_SESSION['AlterarCliente'])){
+        		
+        		$al = unserialize($_SESSION['AlterarCliente']);
+        		unset($_SESSION['AlterarCliente']);
+        		$alDAO = new AlunoDAO();
+        		$alDAO->alterarAluno($al);
+        		$_SESSION['msg'] = "Aluno alterado com sucesso";
+        		$novoPrivate = $alDAO->verificarAluno($al);
+        		$_SESSION['privateUser'] = serialize($novoPrivate);
+        		$_SESSION['perfil'] = serialize($novoPrivate);
+        		
+        	}else{
+        		$erro = array();
+        		$erro[] = "sem aluno pra alterar";
+        		$_SESSION['erros'] = serialize($erro);
+        		
+        	}
+        	$_SESSION['tela'] = "perfil";
+        	header("location: ../visao/area_dos_contos.php");
+        	break;
         break;
         //volta a home
         default:

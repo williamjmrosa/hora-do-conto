@@ -30,6 +30,43 @@ Class ProfessorDAO{
 		
 	}//fecha cadastrar professor
 	
+	//Alterar Professor
+	public function alterarProfessor($prof) {
+		
+		try {
+			
+			$stat = $this->conexao->prepare("UPDATE professor SET nome = ?, email = ?, contato = ?, senha = ? WHERE cpf_cnpj = ?");
+			$stat->bindValue(1, $prof->nome);
+			$stat->bindValue(2, $prof->email);
+			$stat->bindValue(3, $prof->contato);
+			$stat->bindValue(4, $prof->senha);
+			$stat->bindValue(5, $prof->cpf_cnpj);
+			
+			$stat->execute();
+			
+		} catch (PDOException $exc) {
+			echo "Erro ao alterar Professor ".$exc;
+		}
+	}
+	
+	//Buscar Professor
+	public function buscarProfessor($prof) {
+		try {
+			$stat = $this->conexao->prepare("SELECT * FROM professor WHERE cpf_cnpj = ?");
+			
+			$stat->bindValue(1, $prof->cpf_cnpj);
+			
+			$stat->execute();
+			
+			$p = $stat->fetchObject("Professor");
+			
+			return $p;
+			
+		} catch (PDOException $exc) {
+			echo  'Erro ao buscar Professor '.$exc;
+		}
+	}
+	
 	//Login Professor
 	public function verificarProfessor($prof){
 		try {

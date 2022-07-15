@@ -28,6 +28,43 @@ Class AlunoDAO{
             echo 'Erro ao cadastrar aluno! ' . $exc;
         }//fecha catch
     }//fecha castrar aluno
+  
+    //Alterar Aluno
+    public function alterarAluno($al) {
+    	
+    	try {
+    		
+    		$stat = $this->conexao->prepare("UPDATE aluno SET nome = ?, email = ?, contato = ?, senha = ? WHERE cpf_cnpj = ?");
+    		$stat->bindValue(1, $al->nome);
+    		$stat->bindValue(2, $al->email);
+    		$stat->bindValue(3, $al->contato);
+    		$stat->bindValue(4, $al->senha);
+    		$stat->bindValue(5, $al->cpf_cnpj);
+    		
+    		$stat->execute();
+    		
+    	} catch (PDOException $exc) {
+    		echo "Erro ao alterar Professor ".$exc;
+    	}
+    }
+    
+    //Buscar Aluno
+    public function buscarAluno($aluno){
+    	try {
+    		
+    		$stat = $this->conexao->prepare("SELECT * FROM aluno WHERE cpf_cnpj = ?");
+    		$stat->bindValue(1, $aluno->cpf_cnpj);
+    		
+    		$stat->execute();
+    		
+    		$al = $stat->fetchObject("Aluno");
+    		
+    		return $al;
+    		
+    	} catch (PDOException $exc) {
+    		echo 'Erro ao buscar aluno '.$exc;
+    	}
+    }
     
     //Login Aluno
     public function verificarAluno($al) {
