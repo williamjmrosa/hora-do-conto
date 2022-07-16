@@ -2,7 +2,7 @@
 session_start();
 include '../modelo/questao.class.php';
 include '../dao/contodao.class.php';
-include '../dao/questionariodao.class.php';
+include_once '../dao/questionariodao.class.php';
 include '../modelo/realizaquestionario.class.php';
 include '../modelo/conto.class.php';
 include '../modelo/aluno.class.php';
