@@ -68,6 +68,26 @@ if(isset($_GET['op'])){
 		//Alterar Responsavel
 		case 2:
 			
+			if(isset($_SESSION['AlterarCliente'])){
+				
+				$resp = unserialize($_SESSION['AlterarCliente']);
+				unset($_SESSION['AlterarCliente']);
+				$respDAO = new ResponsavelDAO();
+				$respDAO->alterarResponsavel($resp);
+				$_SESSION['msg'] = "Responsavel alterado com sucesso";
+				$novoPrivate = $respDAO->verificarResponsavel($resp);
+				$_SESSION['privateUser'] = serialize($novoPrivate);
+				$_SESSION['perfil'] = serialize($novoPrivate);
+				
+			}else{
+				$erro = array();
+				$erro[] = "sem professor pra alterar";
+				$_SESSION['erros'] = serialize($erro);
+				
+			}
+			$_SESSION['tela'] = "perfil";
+			header("location: ../visao/area_dos_contos.php");
+			break;
 		//Volta a home
 		default:
 			header('location:../index.php');
