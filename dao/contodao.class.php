@@ -98,6 +98,24 @@ Class ContoDAO{
 		}
 	}
 	
+	//Filtrar conto
+	public function filtrarContos($filtro){
+		try {
+			
+			$stat = $this->conexao->prepare("SELECT * FROM conto WHERE titulo LIKE ?");
+			$stat->bindValue(1, "%".$filtro."%");
+			
+			$stat->execute();
+			
+			$array = $stat->fetchAll(PDO::FETCH_CLASS, 'Conto');
+			
+			return $array;
+			
+		} catch (PDOException $exc) {
+			echo 'Erro ao filtrar contos '.$exc;
+		}
+	}
+	
 	//Buscar conto
 	public function buscarConto($id){
 		try {
