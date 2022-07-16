@@ -13,7 +13,7 @@ if(isset($_GET['op'])){
     switch ($OP) {
         
         
-        //Cadastrar InstituiÁ„o.
+        //Cadastrar Institui√ß√£o.
         case 1:
             
             $erro = array();
@@ -23,9 +23,9 @@ if(isset($_GET['op'])){
                 break;
             }
             
-            $cpf = filter_var(@$_POST['cpf-cnpj'],FILTER_SANITIZE_STRING);
-            if(!Validacao::validarCPF($cpf)){
-                $erro[] = '<br>CPF Inv√°lido';
+            $cnpj = filter_var(@$_POST['cpf-cnpj'],FILTER_SANITIZE_STRING);
+            if(!Validacao::validarCNPJ($cnpj)){
+                $erro[] = '<br>CNPJ Inv√°lido';
             }
             $nome = filter_var(@$_POST['nome'],FILTER_SANITIZE_STRING);
             if(!Validacao::validarNome($nome)){
@@ -46,7 +46,7 @@ if(isset($_GET['op'])){
             
             if (count($erro)==0) {
                 $inst = new Instituicao;
-                $inst->cpf_cnpj = Padronizacao::padronizarCNPJ($cpf_cnpj);
+                $inst->cpf_cnpj = Padronizacao::padronizarCNPJ($cnpj);
                 $inst->nome = Padronizacao::padronizarNome($nome);
                 $inst->email = Padronizacao::padronizarEmail($email);
                 $inst->contato = Padronizacao::padronizarContato($contato);
@@ -56,7 +56,7 @@ if(isset($_GET['op'])){
                 $instDAO->cadastrarInstituicao($inst);
                 
                 
-                $_SESSION['msg'] = "InstituiÁ„o Cadastrada.";
+                $_SESSION['msg'] = "Institui√ß√£o Cadastrada.";
                 header('location:../visao/cadastre_se.php');
                 
             }
@@ -67,7 +67,7 @@ if(isset($_GET['op'])){
             break;
             
             
-            //Alterar InstituiÁ„o.
+            //Alterar Institui√ß√£o.
         case 2:
             
             break;

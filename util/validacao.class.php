@@ -22,12 +22,17 @@ class Validacao{
         }
     }
     public static function validarCPF($v){
-        $exp = '/([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/';
+        $exp = '/^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/';
         return preg_match($exp, $v);
     }
     
     public static function validarContato($v) {
     	$exp = '/^[(][0-9]{2,3}[)][ ][0-9]{4,5}-[0-9]{4}$/';
+    	return preg_match($exp, $v);
+    }
+    
+    public static function validarCNPJ($v){
+    	$exp = '/^[0-9]{2}.[0-9]{3}.[0-9]{3}\/[0-9]{4}-[0-9]{2}$/';
     	return preg_match($exp, $v);
     }
 }

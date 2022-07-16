@@ -2,6 +2,7 @@
 include '../dao/alunodao.class.php';
 include '../dao/professordao.class.php';
 include '../dao/responsaveldao.class.php';
+include '../dao/instituicaodao.class.php';
 Class ControleLogin{
 	public static function logar($cliente,$tipo) {
 		switch ($tipo) {
@@ -56,6 +57,23 @@ Class ControleLogin{
 				}
 				
 			break;
+			
+			case 4:
+				//Login Instituição
+				$insDAO = new InstituicaoDAO();
+				$instituicao = $insDAO->verificarInstituicao($cliente);
+				
+				if($instituicao && !is_null($instituicao)){
+					//Foi encontrado instituição no banco
+					$_SESSION['privateUser'] = serialize($instituicao);
+					$_SESSION['privateTipo'] = $tipo;
+					//Direciona para areas dos contos
+					header('location:../visao/area_dos_contos.php');
+				}else{
+					$_SESSION['msg'] = "email/senha inválido(s)";
+					header('location:../visao/login.php');
+				}
+				break;
 			
 			default:
 				

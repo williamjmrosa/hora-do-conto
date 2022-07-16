@@ -70,8 +70,8 @@ if(isset($_SESSION['privateUser'])){
 					<label class="form-check-label" for="exampleRadios3">Professor</label>
 				</div>
 				<div class="form-check form-check-inline fonte-cinza">
-					<input class="form-check-input" type="radio" name="tipoLogin" id="exampleRadios3" value="4">
-					<label class="form-check-label" for="exampleRadios3">Instituição</label>
+					<input class="form-check-input" type="radio" name="tipoLogin" id="exampleRadios4" value="4">
+					<label class="form-check-label" for="exampleRadios4">Instituição</label>
 				</div>
 			</div>
 				

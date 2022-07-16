@@ -10,7 +10,7 @@ Class InstituicaoDAO{
 		$this->conexao = ConexaoBanco::getInstancia();
 	}
 	
-	//Cadastrar Instituição
+	//Cadastrar InstituiÃ§Ã£o
 	public function cadastrarInstituicao($inst) {
 		
 		try {
@@ -25,20 +25,20 @@ Class InstituicaoDAO{
 			$stat->execute();
 			
 		} catch (PDOException $exc) {
-			echo 'Erro ao cadastrar instituição! '. $exc;
+			echo 'Erro ao cadastrar instituiÃ§Ã£o! '. $exc;
 		}//fecha catch
 		
-	}//fecha cadastrar instituição
+	}//fecha cadastrar instituiÃ§Ã£o
 	
-	//Login Instituição
+	//Login InstituiÃ§Ã£o
 	public function verificarInstituicao($inst){
 		try {
-			$stat = $this->conexao->query("select * from professor where email = '$inst->email' and senha = '$inst->senha'");
+			$stat = $this->conexao->query("select * from instituicao where email = '$inst->email' and senha = '$inst->senha'");
 			$instituicao = null;
 			$instituicao = $stat->fetchObject('Instituicao');
 			return $instituicao;
 		} catch (PDOException $exc) {
-			echo 'Erro ao verificar Instituição! '.$exc;
+			echo 'Erro ao verificar Instituiï¿½ï¿½o! '.$exc;
 		}//fecha catch.
 	}
 }

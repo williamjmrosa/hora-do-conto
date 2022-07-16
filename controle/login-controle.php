@@ -5,6 +5,7 @@ include '../util/controle-login.class.php';
 include '../modelo/aluno.class.php';
 include '../modelo/professor.class.php';
 include '../modelo/responsavel.class.php';
+include '../modelo/instituicao.class.php';
 
 if (isset($_GET['op'])) {
 	$OP = filter_var(@$_REQUEST['op'],FILTER_SANITIZE_NUMBER_INT);
@@ -24,8 +25,8 @@ if (isset($_GET['op'])) {
 				$cliente = new Aluno;
 			}else if($tipo == 3){
 				$cliente = new Professor;
-			}else{
-				
+			}else if($tipo == 4){
+				$cliente = new Instituicao;
 			}
 			$cliente->email = $email;
 			$cliente->senha = $senha;
