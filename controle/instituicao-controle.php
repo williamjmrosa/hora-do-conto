@@ -69,6 +69,26 @@ if(isset($_GET['op'])){
             
             //Alterar Instituição.
         case 2:
+        	
+        	if(isset($_SESSION['AlterarCliente'])){
+        		
+        		$inst = unserialize($_SESSION['AlterarCliente']);
+        		unset($_SESSION['AlterarCliente']);
+        		$instDAO = new InstituicaoDAO();
+        		$instDAO->alterarInstituicao($inst);
+        		$_SESSION['msg'] = "Instituição alterada com sucesso";
+        		$novoPrivate = $instDAO->verificarInstituicao($inst);
+        		$_SESSION['privateUser'] = serialize($novoPrivate);
+        		$_SESSION['perfil'] = serialize($novoPrivate);
+        		
+        	}else{
+        		$erro = array();
+        		$erro[] = "sem instituicao pra alterar";
+        		$_SESSION['erros'] = serialize($erro);
+        		
+        	}
+        	$_SESSION['tela'] = "perfil";
+        	header("location: ../visao/area_dos_contos.php");
             
             break;
             //volta a home

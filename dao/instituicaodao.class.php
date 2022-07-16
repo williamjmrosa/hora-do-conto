@@ -30,6 +30,43 @@ Class InstituicaoDAO{
 		
 	}//fecha cadastrar instituição
 	
+	//Alterar Instituiçao
+	public function alterarInstituicao($inst) {
+		
+		try {
+			
+			$stat = $this->conexao->prepare("UPDATE instituicao SET nome = ?, email = ?, contato = ?, senha = ? WHERE cpf_cnpj = ?");
+			$stat->bindValue(1, $inst->nome);
+			$stat->bindValue(2, $inst->email);
+			$stat->bindValue(3, $inst->contato);
+			$stat->bindValue(4, $inst->senha);
+			$stat->bindValue(5, $inst->cpf_cnpj);
+			
+			$stat->execute();
+			
+		} catch (PDOException $exc) {
+			echo "Erro ao alterar Professor ".$exc;
+		}
+	}
+	
+	//Buscar Instituicao
+	public function buscarProfessor($inst) {
+		try {
+			$stat = $this->conexao->prepare("SELECT * FROM instituicao WHERE cpf_cnpj = ?");
+			
+			$stat->bindValue(1, $inst->cpf_cnpj);
+			
+			$stat->execute();
+			
+			$instituicao = $stat->fetchObject("Instituicao");
+			
+			return $instituicao;
+			
+		} catch (PDOException $exc) {
+			echo  'Erro ao buscar Professor '.$exc;
+		}
+	}
+	
 	//Login Instituição
 	public function verificarInstituicao($inst){
 		try {

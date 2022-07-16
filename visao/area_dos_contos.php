@@ -17,6 +17,7 @@ if ($_SESSION ['privateTipo'] == 1) {
 	include '../modelo/professor.class.php';
 } else {
 	// Instituição
+	include '../modelo/instituicao.class.php';
 }
 $cli = unserialize ( $_SESSION ['privateUser'] );
 ?>
