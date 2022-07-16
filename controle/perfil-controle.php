@@ -64,7 +64,7 @@ if(isset($_SESSION['privateUser']) && isset($_SESSION['privateTipo']) && isset($
 					$erro[] = '<br>Senha Inválida';
 				}
 			}
-			
+			$_SESSION['tela'] = 'perfil';
 			if(count($erro) == 0){
 				$cliente->cpf_cnpj = $clientePrivado->cpf_cnpj;
 				$cliente->nome = Padronizacao::padronizarNome($nome);
@@ -78,9 +78,11 @@ if(isset($_SESSION['privateUser']) && isset($_SESSION['privateTipo']) && isset($
 				break;
 			}else{
 				$_SESSION['erros'] = serialize($erro);
+				header("location: ../controle/perfil-controle.php?op=2");
 			}
-			$_SESSION['tela'] = 'perfil';
-			header("location: ../visao/area_dos_contos.php");
+			
+			
+			
 			
 			
 		break;
@@ -88,7 +90,8 @@ if(isset($_SESSION['privateUser']) && isset($_SESSION['privateTipo']) && isset($
 		case 2:
 			
 			if($Tipo == 1){
-				
+				$resDAO = new ResponsavelDAO();
+				$cliente = $resDAO->buscarResponsavel($clientePrivado);
 			}elseif($Tipo == 2){
 				$aDAO = new AlunoDAO();
 				$cliente = $aDAO->buscarAluno($clientePrivado);
@@ -96,7 +99,8 @@ if(isset($_SESSION['privateUser']) && isset($_SESSION['privateTipo']) && isset($
 				$pDAO = new ProfessorDAO();
 				$cliente = $pDAO->buscarProfessor($clientePrivado);
 			}elseif($Tipo == 4){
-				
+				$insDAO = new InstituicaoDAO();
+				$cliente = $insDAO->buscarProfessor($clientePrivado);
 			}else{
 				$_SESSION['erros'] = "Acesso ilegal";
 				header("location: ../index.php");
